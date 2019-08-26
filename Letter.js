@@ -14,4 +14,12 @@ function letter(value) {
         }
     }
 }
+this.guess = function(guess) {
+    if (guess === this.letter) {
+        this.guessed = true;
+    }
 }
+
+}
+
+module.exports = letter;
