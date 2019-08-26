@@ -25,5 +25,5 @@ function word(answer) {
         }
     }
 }
-console.log("test")
+console.log("test fo bugs")
 module.exports = Word;
