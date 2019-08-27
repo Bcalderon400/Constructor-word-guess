@@ -76,16 +76,17 @@ function makeGuess() {
                     makeGuess();
                 }
             } else {
+                console.log("\n ")
                 console.log("CONGRATULATIONS! YOU GOT THE WORD!");
                 console.log(word.update());
                 continuePrompt();
             }
         });
-    console.log("\n ")
-    console.log('\n ******************************************************* ')
+
 }
 
 function continuePrompt() {
+    console.log("\n ")
     inquirer.prompt([{
             name: "continue",
             type: "list",
