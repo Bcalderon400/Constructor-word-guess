@@ -70,6 +70,7 @@ function makeGuess() {
             if (guesses > 0 && checker.indexOf("_") !== -1) {
                 guesses--;
                 if (guesses === 0) {
+                    console.log("\n ")
                     console.log("YOU RAN OUT OF GUESSES! GAME OVER.");
                     continuePrompt();
                 } else {
