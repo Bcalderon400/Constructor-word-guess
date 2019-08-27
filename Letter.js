@@ -1,22 +1,18 @@
-function Letter(value) {
-    this.letter = value;
-    this.guessed = false;
+function Letter(letter) {
+    this.letter = letter;
+    this.isGuessed = false;
 
-    this.toString = function() {
-        if (this.letter === " ") {
-            this.guessed = true;
-            return " ";
+    this.getCharacter = function() {
+        if (!this.isGuessed) {
+            return "_";
         } else {
-            if (this.guessed === false) {
-                return "_"
-            } else {}
             return this.letter;
         }
     }
 
-    this.guess = function(guess) {
+    this.checkLetter = function(guess) {
         if (guess === this.letter) {
-            this.guessed = true;
+            this.isGuessed = true;
         }
     }
 }
