@@ -1,35 +1,39 @@
-const Word = require("./word.js");
-const inquirer = require("inquirer");
+var Word = require("./word.js");
+var inquirer = require("inquirer");
 
-const wordBank = [
-    "mercury", "venus", "earth",
-    "mars", "jupiter", "saturn",
-    "uranus", "neptune", "pluto",
-    "ceres", "eris", "makemake",
-    "haumea"
+var space = [
+    "ufo",
+    "quasar",
+    "pluto",
+    "galaxy",
+    "interspace",
+    "nebula",
+    "nova",
+    "cosmos",
+    "alien",
+    "particles",
+    "vaccuum"
 ];
 
-let guesses;
-let pickedWords;
-let word;
-let pickedWord;
+var guesses;
+var pickedWords;
+var word;
+var pickedWord;
 
 function init() {
     pickedWords = [];
-    console.log("Hello, and welcome to Word Guess in Space!");
-    console.log("------------------------------------------");
+    console.log("\n ******************************************************* ")
+    console.log("\n Hello, and welcome to Word Guess in Space!");
+    console.log("\n ******************************************************* ");
+    console.log("\n ")
     playGame();
 }
 
 function playGame() {
     pickedWord = "";
     guesses = 15;
-    if (pickedWords.length < wordBank.length) {
+    if (pickedWords.length < space.length) {
         pickedWord = getWord();
-    } else {
-        // WIN CONDITION
-        console.log("You know a lot about your celestial neighborhood. Cheers!");
-        continuePrompt();
     }
     if (pickedWord) {
         word = new Word(pickedWord);
@@ -39,8 +43,8 @@ function playGame() {
 }
 
 function getWord() {
-    let rand = Math.floor(Math.random() * wordBank.length);
-    let randomWord = wordBank[rand];
+    var rand = Math.floor(Math.random() * space.length);
+    var randomWord = space[rand];
     if (pickedWords.indexOf(randomWord) === -1) {
         pickedWords.push(randomWord);
         return randomWord;
@@ -50,12 +54,13 @@ function getWord() {
 }
 
 function makeGuess() {
-    let checker = [];
+    var checker = [];
     inquirer.prompt([{
             name: "guessedLetter",
             message: word.update() +
-                "\nGuess a letter!" +
-                "\nGuesses Left: " + guesses
+                "\n Guess a letter!" +
+                "\n Guesses Left: " +
+                guesses
         }])
         .then(data => {
             word.letters.forEach(letter => {
@@ -73,9 +78,11 @@ function makeGuess() {
             } else {
                 console.log("CONGRATULATIONS! YOU GOT THE WORD!");
                 console.log(word.update());
-                playGame();
+                continuePrompt();
             }
         });
+    console.log("\n ")
+    console.log('\n ******************************************************* ')
 }
 
 function continuePrompt() {
